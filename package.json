@@ -10,7 +10,6 @@
   "author": "Hack Reactor",
   "license": "MIT",
   "dependencies": {
-    "add": "^2.0.6",
     "aws-sdk": "^2.67.0",
     "axios": "^0.16.1",
     "babel-core": "^6.24.1",
@@ -42,7 +41,6 @@
     "grunt-mocha-test": "^0.13.2",
     "grunt-pg": "https://github.com/watsoncj/grunt-pg.git",
     "jest": "^20.0.4",
-    "jquery": "^3.2.1",
     "json-loader": "^0.5.4",
     "knex": "^0.13.0",
     "leaflet": "^1.0.3",
@@ -87,8 +85,7 @@
     "tzwhere": "^1.0.0",
     "uuid": "^3.0.1",
     "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.4.2",
-    "yarn": "^0.24.5"
+    "webpack-dev-server": "^2.4.2"
   },
   "babel": {
     "plugins": [

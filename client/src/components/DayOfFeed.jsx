@@ -55,7 +55,6 @@ class DayOfFeed extends React.Component {
 
   render() {
     const feedItems = this.props.feeds.feedItems;
-    console.log('this should be the event Id ', this.props.events.activeEvent);
     return (
       <div>
         <h3>Post a message</h3>

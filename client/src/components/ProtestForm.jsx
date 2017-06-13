@@ -7,7 +7,6 @@ import _ from "lodash";
 import moment from 'moment';
 import momentTimezone from 'moment-timezone';
 import tzlookup from 'tz-lookup';
-import $ from "jquery";
 
 class ProtestForm extends React.Component {
   constructor(props) {
