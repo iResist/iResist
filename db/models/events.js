@@ -53,6 +53,7 @@ module.exports.findEventByIds = (userId, type, cb) => {
 module.exports.findEventData = (eventIds, cb) => {
   knex.select().from('events').where('id', 'in', eventIds)
     .then(data => {
+      console.log('RETURN FROM EVENT DATA: ', data)
       cb(null, data);
     })
     .catch(e => {
@@ -112,7 +113,8 @@ module.exports.decrementAttendeeCount = (eventId, cb) => {
 };
 
 module.exports.joinEvent = (eventId, userId, type, cb) => {
-  knex('users_events').insert({user_id: userId, event_id: eventId, type: type})
+  knex('users_events')
+    .insert({user_id: userId, event_id: eventId, type: type})
     .then(data => {
       cb(null, data);
     })
