@@ -1,8 +1,6 @@
 const expect = require('chai').expect;
 const event = require('../../db/models/events');
-const eventController = require('../controllers/events');
 const user = require('../../db/models/user');
-const userController = require('../controllers/user');
 const dbUtils = require('../../db/lib/utils.js');
 
 describe('Event model tests', () => {

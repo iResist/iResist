@@ -54,6 +54,7 @@ module.exports.checkForFeedItemVote = (vote, cb) => {
 module.exports.insertFeedItemVote = (vote, cb) => {
   console.log('insertFeedItemVote ran');
   knex('feed_item_credibility')
+    .returning('up_down')
     .insert({
       user_id: vote.userId,
       feed_item_id: vote.itemId,
@@ -67,6 +68,7 @@ module.exports.insertFeedItemVote = (vote, cb) => {
         .increment('credibility', vote.polarity);
     })
     .then(data => {
+      console.log('RETURN FROM VOTE: ', data)
       cb(null, data);
     })
     .catch(err => {
@@ -77,6 +79,7 @@ module.exports.insertFeedItemVote = (vote, cb) => {
 
 module.exports.replaceFeedItemVote = (vote, cb) => {
   knex('feed_item_credibility')
+    .returning('up_down')
     .where({
       user_id: vote.userId,
       feed_item_id: vote.itemId

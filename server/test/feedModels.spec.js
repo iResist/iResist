@@ -47,6 +47,17 @@ describe('Feed model test', function() {
     dbUtils.rollback(done);
   });
 
+  const upVote = {
+    userId: 1,
+    itemId: 1,
+    polarity: 1,
+  };
+  const downVote = {
+    userId: 1,
+    itemId: 1,
+    polarity: -1,
+  };
+
   it('should be able to post new feed items', (done) => {
     const newPost = { 
       eventId: 1,
@@ -74,27 +85,32 @@ describe('Feed model test', function() {
   })
 
   it('should be able to vote on a feed item once', (done) => {
-    const vote = {
-      userId: 1,
-      itemId: 1,
-      polarity: 1,
-    };
-    feed.insertFeedItemVote(vote, (err, data) => {
+    feed.insertFeedItemVote(upVote, (err, data) => {
       expect(err).to.equal(null);
       expect(data).to.equal(1);
       done();
     })
   })
 
-  it('should not be able to vote on a feed item twice', (done) => {
-    const newVote = {
-      userId: 1,
-      itemId: 1,
-      polarity: 1,
-    };
-    feed.checkForFeedItemVote(newVote, (err, data) => {
-      expect(err).to.not.equal(null);
-      done();
+  it('should not be able to cast the same vote on a feed item twice', (done) => {
+    feed.insertFeedItemVote(upVote, (err, firstData) => {
+      expect(err).to.equal(null);
+      expect(firstData).to.equal(1);
+      feed.insertFeedItemVote(upVote, (err, secondData) => {
+        expect(err).to.equal(null);
+        expect(secondData).to.equal(firstData);
+        done();
+      })
+    })
+  })
+
+  it('should be able to reverse a vote', (done) => {
+    feed.insertFeedItemVote(upVote, (err, firstData) => {
+      expect(err).to.equal(null);
+      expect(firstData).to.equal(1);
+      feed.insertFeedItemVote(downVote, (err, secondData) => {
+        expect(secondData).to.equal(-1);
+      })
     })
   })
 

@@ -53,7 +53,6 @@ module.exports.findEventByIds = (userId, type, cb) => {
 module.exports.findEventData = (eventIds, cb) => {
   knex.select().from('events').where('id', 'in', eventIds)
     .then(data => {
-      console.log('RETURN FROM EVENT DATA: ', data)
       cb(null, data);
     })
     .catch(e => {
