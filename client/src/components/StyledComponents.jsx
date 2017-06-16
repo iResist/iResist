@@ -22,10 +22,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.div`
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
   color: tomato;
+  font-family: 'Open Sans', sans-serif;
 	font-size: 1em;
   text-align: center;
 	margin-bottom: 17px;
@@ -33,10 +31,11 @@ export const Button = styled.div`
   width: 80vw;
 	border: 1px solid tomato;
 	border-radius: 3px;
-  line-height: 25px;
+  line-height: 22px;
 `;
 
 export const EditButton = Button.extend`
+  display: block;
   color: #ada3a3;
   border-color: #ada3a3;
   margin-top: 20px;
@@ -62,14 +61,33 @@ export const Status = styled.span`
   padding-left: 5px;
 `;
 
+
 export const Title = styled.div`
-  size: 15px;
-  border-bottom: solid #eee 0.4px;
+  font-family: 'Open Sans', sans-serif;
+  size: 21x;
   padding: 10px;
+  border-bottom: solid #eee 0.4px;
 `;
 
+export const List = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  size: 15px;
+  padding: 10px;
+  border-bottom: solid #eee 0.4px;
+`;
+
+
+export const StatusTitle = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 9px;
+  margin-bottom: 5px;
+  margin-top: 20px;
+`
+
 export const PageTitle = styled.div`
-  font-family: 'Cousine', monospace;
+  font-family: 'Open Sans', sans-serif;
   font-size: 25px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -77,20 +95,32 @@ export const PageTitle = styled.div`
 
 export const Header = styled.div`
   padding-top: 35px;
-  font-family: 'Cousine', monospace;
+  font-family: 'Permanent Marker', cursive;
   font-size: 40px;
   padding-left: 8px;
   padding-bottom: 15px;
+  margin-bottom: 20px;
+
 `;
 
 export const Name = styled.div`
-  font-family: Open Sans;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
   padding-top: 15px;
   padding-bottom: 10px;
   margin-left: 4.5px;
   margin-top: 15px;
+  margin-bottom: 10px;
 `;
 
+export const T = styled.div`
+  line-height: 6px;
+  margin-bottom: 8px;
+`
+export const InfoTag = styled.p`
+ font-family: 'Open Sans', sans-serif;
+ font-weight: 600;
+`
 export const Info = styled.p`
   display: flex;
   flex-direction: column;
@@ -99,6 +129,12 @@ export const Info = styled.p`
   font-size: 12px;
   margin-left: 4.5px;
 `;
+
+export const Description = styled.div`
+  width: 290px;
+  line-height: 16px;
+  word-wrap: break-word;
+`
 
 export const Icon = styled.img`
   width: 15px;
@@ -114,9 +150,9 @@ export const Rotate = styled.div`
 
 export const ToggledProtest = styled.div`
   display: block;
-  margin-left: 15px;
-  margin-right: 15px;
-  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
 `;
 
 export const Wrapper = styled.div`
@@ -125,11 +161,31 @@ export const Wrapper = styled.div`
   flex: 1;
 `;
 
+export const DashboardWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 81vw;
+`;
+
+export const FindProtestWrapper = DashboardWrapper.extend`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 81vw;
+`;
+
+export const FormWrapper = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 35px;
+`
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 47px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
 `;
 
 export const InputInfo = styled.div`
@@ -138,30 +194,46 @@ export const InputInfo = styled.div`
 `;
 export const Input = styled.input`
   font-size: 14px;
-  height: 30px;
-  width: 300px;
+  height: 40px;
+  width: 297px;
   padding-left: 10px;
-  border-radius: 3px;
-  border: solid #dddddd 1px;
   margin-bottom: 15px;
-  margin-right: 15px;
+  margin-top: 7px;
+  border: 0.2px solid #eee;
+  padding: 7px;
+  border-radius: 2.5px;
 `;
 
-export const Text = styled.textarea`
-  font-size: 14px;
-  height: 30px;
-  width: 300px;
-  padding-left: 10px;
-  border-radius: 3px;
-  border: solid #dddddd 1px;
-  margin-bottom: 15px;
-  margin-right: 15px;
+export const SearchIcon = styled.i`
+  height: 40px;
+  border: 0.2px solid #eee;
+  border-radius: 2.5px;
+  border-left: none;
+  padding-top: 12px;
+  padding-right: 8px;
+
 `;
 
 export const Label = styled.label`
+  border: 0.2px solid #eee;
+  padding: 7px;
+  border-radius: 4px;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
   font-weight: normal;
+`;
+
+export const Text = styled.textarea`
+ font-size: 14px;
+  height: 80px;
+  width: 297px;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  margin-top: 7px;
+  margin-right: 15px;
+  border: 0.2px solid #eee;
+  padding: 7px;
+  border-radius: 4px;
 `;
 
 export const Search = styled.input`
@@ -175,9 +247,13 @@ export const Search = styled.input`
   margin-bottom: 15px;
 `;
 export const Submit = Search.extend`
-  width: 150px;
+  width: 115px;
 `;
 
+export const CancelEvent = Submit.extend`
+  background-color: tomato;
+  color: white;
+`;
 
 export const Load = styled.div`
   width: 100px;
@@ -200,17 +276,23 @@ export const TextInput = styled.input`
   background-color:#F7F7F7;
   border:none;
   padding: 10px;
-  margin-right: 10px;
 
 `;
+
+export const cameraIcon = styled.div`
+  height: 40px;
+  background-color:#F7F7F7;
+  border: none;
+`
 export const DayOfTitle = styled.div`
+  font-family: 'Open Sans', sans-serif;
   display:flex;
   justify-content:center;
-  margin-bottom:1vh;
+  margin-bottom:20px;
+  margin-top: 20px;
   font-size:6vh;
   height: 7vh;
   top:0px;
-  margin: 1vh;
 `;
 
 export const DayOfContentWrapper = styled.div`
@@ -218,6 +300,12 @@ export const DayOfContentWrapper = styled.div`
   width: 100vw;
   margin: auto;
 `;
+
+export const Group = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  line-height: 20px;
+  margin-bottom: 20px;
+`
 
 export const CredCount = styled.div`
   text-align: center;
@@ -237,7 +325,8 @@ export const PinContent = styled.div`
 `;
 
 export const ItemUserName = styled.div`
-  color: #4A4A4A
+  color: #4A4A4A;
+  font-weight: 600;
 `;
 
 export const TimeStamp = styled.div`
@@ -255,14 +344,20 @@ export const FeedWrapper = styled.div`
   padding-bottom: 70px;
 `;
 
-export const DashboardWrapper = styled.div`
+export const TwitterWrapper = styled.div`
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 81vw;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-bottom: 70px;
+`
+export const Bird = styled.i`
+  color: tomato;
+  margin-right: 5px;
 `;
 
 export const Item = styled.div`
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12.5px;
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -275,6 +370,19 @@ export const Item = styled.div`
     border-bottom: none;
   }
 `;
+
+export const Twit = Item.extend`
+  font-size: 12.5px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+`;
+
+export const TwitDate = styled.div`
+  color: #bdb6b6;
+`
+
+
 
 export const VoteImage = styled.img`
   width: 100%;
@@ -303,7 +411,8 @@ export const VoteDown = styled.i`
   width: 30%;
 `;
 
-export const PinVoteUp = styled.i`
+export const 
+PinVoteUp = styled.i`
   color: hsla(120, 90%, 42%, 0.93);
   size: 100%;
 `;
@@ -344,8 +453,8 @@ export const Tab = styled.div`
 
 export const ErrorMsg = styled.div`
   color: red;
-  font-size: 80%
-  }
+  font-size: 80%;
+  margin-bottom: 5px;
 `;
 
 export const PinTextInput = styled.textarea`
@@ -362,13 +471,22 @@ export const PinSubmit = styled.input`
 `;
 
 export const DayOfProtestInfo = styled.div`
-  margin: 0 20px;
-  padding: 0 0 70px 0;
+  font-family: 'Open Sans', sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80vw;
+  margin-top: 30px;
 `;
 
 export const DayOfInfoCategory = styled.div`
-  font-family: 'Amiko', sans-serif;
-  font-weight:bold;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   font-size: 16px;
-  text-decoration: underline;
+`;
+
+export const Photo = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 `;

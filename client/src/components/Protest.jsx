@@ -3,7 +3,7 @@ import dateFormat from 'dateformat';
 import MapContainer from './MapContainer.jsx';
 import EventButton from './EventButton.jsx';
 import styled from 'styled-components';
-import { DayOfContentWrapper, ToggledProtest, Status, Title, Name, Info, Icon } from './StyledComponents.jsx';
+import { DayOfContentWrapper, ToggledProtest, Status, Title, Name, Info, Icon, InfoTag, T, Description } from './StyledComponents.jsx';
 import $ from "jquery";
 
 
@@ -80,13 +80,16 @@ class Protest extends React.Component {
         <ToggledProtest>
           <Name onClick={this.handleProtestClick}>{this.props.protest.name}</Name>
           <Info>
-            <p><b>Cause:</b> {this.props.protest.cause}</p>
-            <p><b>Start:</b> {dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')}</p>
-            <p><b>End:</b> {dateFormat(endTime, 'mmmm dd, yyyy: h:MM TT')}</p>
-            <p><b>Address:</b> {this.props.protest.address}</p>
-            <p><b>Description:</b> {this.props.protest.description}</p>
-            <p><b>Attendee Count:</b> {this.props.protest.attendee_count}</p>
-            <p><b>Current Weather:</b> {this.state.currentTempF + "ºF / " + this.state.currentTempC + "ºC " + this.state.currentWeatherDescription}</p>
+          
+            <T><InfoTag>Cause</InfoTag> <p>{this.props.protest.cause}</p></T>
+        
+            <div style={{display: 'flex'}}>
+              <T><InfoTag>Time</InfoTag> <p>{dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')} to {dateFormat(endTime, 'h:MM TT')}</p></T>
+            </div>
+            <T><InfoTag>Address</InfoTag> <p>{this.props.protest.address}</p></T>
+            <T><InfoTag>Current Weather</InfoTag> <p>{this.state.currentTempF + "ºF / " + this.state.currentTempC + "ºC " + this.state.currentWeatherDescription}</p></T>
+            <T><InfoTag>RSVP'd</InfoTag> <p>{this.props.protest.attendee_count}</p></T>
+            <T><InfoTag>Description</InfoTag> <Description>{this.props.protest.description}</Description></T>
           </Info>
           <MapContainer {...this.props} mapType='dashboardMap' />
           <EventButton {...this.props} leader={leader} userId={userId} protestId={this.props.protest.id} />

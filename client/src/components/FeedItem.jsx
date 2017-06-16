@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { Rotate, Item, VoteUp, VoteDown, VoteHolder } from "./StyledComponents.jsx";
+import { Rotate, Item, ItemUserName, VoteUp, VoteDown, VoteHolder, ErrorMsg } from "./StyledComponents.jsx";
 import styled from "styled-components";
 
 
@@ -20,7 +20,6 @@ class FeedItem extends React.Component {
       this.state.element = (
         <div className="mediaContainer">
           <img
-            style={{ flex: 1,width: '75%',height: '75%', paddingBottom: '15px'}}
             className="media"
             id={this.props.itemId}
             onDoubleClick={this.rotate.bind(this)}
@@ -90,15 +89,18 @@ class FeedItem extends React.Component {
     var time = moment(Number(this.props.time)).format("h:mm a");
     return (
       <Item>
+
         <VoteHolder>
-          <VoteUp className="fa fa-caret-up fa-lg" onClick={() => this.handleVoteType(1)} />
+          <VoteUp className="fa fa-caret-up fa-lg" style={{}} onClick={() => this.handleVoteType(1)} />
           <div style={{textAlign: 'inherit',color:'#9B9B9B'}}>{this.props.credibility}</div>
           <VoteDown className="fa fa-caret-down fa-lg" onClick={() => this.handleVoteType(-1)} />
         </VoteHolder>
+    
         <div style={{ flexDirection: "row", flex: 8, paddingLeft: '10px' }}>
-          <div style={{color:'#4A4A4A'}}>{this.props.username}</div>
+          <ItemUserName>{this.props.username}</ItemUserName>
           <div style={{color:'#C5C5C5', fontSize:'.8em'}}><img style={{width:'1em', marginRight:'5px'}} src='images/Clock.svg'/>{time}</div>
           <div>{this.state.element}</div>
+          {this.props.errorMsg ? (<ErrorMsg>{this.props.errorMsg}</ErrorMsg>) : <div></div>}
         </div>
       </Item>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import Dropzone  from 'react-dropzone';
 import superagent from 'superagent';
 import axios from 'axios';
-import styled from 'styled-components';
+import { cameraIcon } from './StyledComponents.jsx';
 
 class UploadMedia extends React.Component {
   constructor(props) {
@@ -36,9 +36,9 @@ class UploadMedia extends React.Component {
 
   render() {
     return (
-      <div style={{width:'6em',marginTop:'1em',marginBottom:'1em'}} >
+      <div style={{width:'40px', backgroundColor: '#F7F7F7'}} >
         <Dropzone className='dropzone' onDrop={this.onDrop.bind(this)} multiple={false} acceptedFiles={'image/jpeg', 'video/mp4', 'video/quicktime', 'image/png'}>          
-          <i className="fa fa-camera fa-lg"></i>
+          <div style={{marginTop: '10px'}}><i className="fa fa-camera fa-lg"></i></div>
         </Dropzone>
       </div>
     );

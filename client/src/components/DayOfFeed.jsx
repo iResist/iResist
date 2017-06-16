@@ -15,7 +15,7 @@ class DayOfFeed extends React.Component {
     this.state = {
       text: '',
       url: '',
-      // credibility: '' || 0,
+      credibility: '' || 0,
       type: 'MESSAGE',
       pageNumber: 1,
       feedItemCount: 0,
@@ -35,16 +35,6 @@ class DayOfFeed extends React.Component {
       let newState = this.state.posts;
       newState.unshift(insertedPost);
       self.setState({posts: newState});
-    });
-
-    this.props.client.on('newFeedItemVote', (vote) => {
-      console.log('NEW FEED ITEM VOTE', vote)
-      this.props.receiveFeedItemVote(vote);
-      self.state.posts.forEach(post => {
-        if (post.id === vote.itemId) {
-          post.credibility === vote.change
-        }
-      });
     });
 
     this.props.client.on('feedItemVoteNotPermitted', (error) => {
@@ -72,7 +62,7 @@ class DayOfFeed extends React.Component {
       url: this.state.url,
       userId: this.props.user.userId,
       username: this.props.user.username,
-      credibility: this.props.credibility,
+      credibility: this.state.credibility,
       time: Date.now()
     };
     this.props.client.emit('newFeedItem', newPost);
@@ -92,6 +82,7 @@ class DayOfFeed extends React.Component {
   }
 
   render() {
+    console.log('')
     const feedItems = this.props.feeds.feedItems;
     return (
       <div>

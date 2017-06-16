@@ -1,19 +1,14 @@
 import React from 'react';
 import Protest from './Protest.jsx';
 import _ from 'lodash';
-import { HomeIcon } from './StyledComponents.jsx';
+import { HomeIcon, FindProtestWrapper } from './StyledComponents.jsx';
 
 
 class FindProtest extends React.Component {
   render() {
-    console.log("FIND PROTEST THIS.PROPS", this.props)
+    console.log("FIND PROTEST THIS.PROPS")
     
     const events = this.props.events.allEvents;
-    const attending = this.props.user.events_attending;
-    const organizing = this.props.user.events_organizing;
-    const notParticipating = _.reject(upcomingEvents, event => {
-      return _.includes(attending, parseInt(event)) || _.includes(organizing, parseInt(event));
-    });
    
     let upcomingEvents = [];
     for (var event in events) {
@@ -22,7 +17,7 @@ class FindProtest extends React.Component {
       }
     }
 
-    if (notParticipating.length === 0) {
+    if (upcomingEvents.length === 0) {
       return (
         <div>
           <HomeIcon
@@ -35,10 +30,18 @@ class FindProtest extends React.Component {
       );
     }
 
+    const attending = this.props.user.events_attending;
+    const organizing = this.props.user.events_organizing;
+
+    const notParticipating = _.reject(upcomingEvents, event => {
+      return _.includes(attending, parseInt(event)) || _.includes(organizing, parseInt(event));
+    });
+
     return (
-      <div>
+      <FindProtestWrapper>
         <HomeIcon 
           className="fa fa-home"
+          style={{marginTop: '50px'}}
           onClick={() => this.props.changeView('DASHBOARD')}
           >
         </HomeIcon>
@@ -52,7 +55,7 @@ class FindProtest extends React.Component {
             role='none'
           />)
         }
-      </div>
+      </FindProtestWrapper>
     );
   }
 }

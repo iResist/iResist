@@ -52,7 +52,7 @@ class Pin extends React.Component {
       return (
         <Marker position={[this.props.lat, this.props.long]} onClick={e => this.handleClick(e)}>
           <Popup>
-            <PinWrapper>
+            <PinWrapper style={{display: 'flex', flexDirection: 'row', alignItems: 'baseline'}}>
               <PinVoteHolder>
                 <PinVoteUp className="fa fa-caret-up fa-lg" onClick={e => this.handleCred(1)}></PinVoteUp>
                 <CredCount>{this.props.pinCred}</CredCount>

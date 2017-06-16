@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import { DayOfContentWrapper, DayOfTitle, DayOfInfoCategory, DayOfProtestInfo } from './StyledComponents.jsx';
+import { DayOfContentWrapper, DayOfTitle, DayOfInfoCategory, DayOfProtestInfo, Group } from './StyledComponents.jsx';
 import { Textfit } from 'react-textfit';
 
 const DayOfInfo = (props) => {
@@ -9,26 +9,26 @@ const DayOfInfo = (props) => {
     <DayOfContentWrapper>
       <DayOfTitle><Textfit>{props.event.name}</Textfit></DayOfTitle>
       <DayOfProtestInfo>
-        <div>
-          <DayOfInfoCategory>Issue:</DayOfInfoCategory>
+        <Group>
+          <DayOfInfoCategory>Issue</DayOfInfoCategory>
             <div>{props.event.cause}</div>
-        </div>
-        <div>
-          <DayOfInfoCategory>Meeting Place:</DayOfInfoCategory>
+        </Group>
+        <Group>
+          <DayOfInfoCategory>Meeting Place</DayOfInfoCategory>
             <div>{props.event.address}</div>
-        </div>
-        <div>
+        </Group>
+        <Group>
           <DayOfInfoCategory>When</DayOfInfoCategory>
             <div>{moment(Number(props.event.time)).format('MMMM DD, YYYY h:mm a')} - {moment(Number(props.event.time) + Number(props.event.duration)).format('h:mm a')}</div>
-        </div>
-        <div>
-          <DayOfInfoCategory>Attendee Count</DayOfInfoCategory>
+        </Group>
+        <Group>
+          <DayOfInfoCategory>RSVP'd</DayOfInfoCategory>
             <div>{props.event.attendee_count}</div>
-        </div>
-        <div>
-          <DayOfInfoCategory>Description:</DayOfInfoCategory>
+        </Group>
+        <Group>
+          <DayOfInfoCategory>Description</DayOfInfoCategory>
             <div>{props.event.description}</div>
-        </div>
+        </Group>
       </DayOfProtestInfo>
     </DayOfContentWrapper>
   );

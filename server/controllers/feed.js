@@ -51,6 +51,7 @@ module.exports.voteFeedItem = (client, io, event, vote) => {
   models.Feed.checkForFeedItemVote(vote, (err, responseVote) => {
     if (err) {
       // emit some sort of err
+      console.log(err);
     } else {
       if (responseVote.length === 0) {
         models.Feed.insertFeedItemVote(vote, (err, insertResponseVote) => {

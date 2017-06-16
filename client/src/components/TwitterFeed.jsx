@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Tweet from './Tweet.jsx';
 import { Textfit } from 'react-textfit';
+import { DayOfContentWrapper, DayOfTitle, TwitterWrapper, Load } from './StyledComponents.jsx';
 
 class TwitterFeed extends React.Component {
   constructor(props) {
@@ -47,22 +48,23 @@ class TwitterFeed extends React.Component {
       });
   }
   render() {
-    console.log('this is the search term: ', this.props.events.allEvents[this.props.events.activeEvent].name);
     return (
-      <div>
-        <h3> Most Recent Tweets </h3>
-        <button onClick={this.getTweets}>Refresh Feed</button>
+      <DayOfContentWrapper>
+        <TwitterWrapper>
+          <DayOfTitle><Textfit>Recent Tweets</Textfit> </DayOfTitle>
+          <Load onClick={this.getTweets}>Refresh Feed</Load>
 
-        {
-          this.state.tweets.map(tweets =>
-            <Tweet
-              username={tweets.username}
-              tweet={tweets.tweet}
-              time={tweets.time}
-            />
-          )
-        }
-      </div>
+          {
+            this.state.tweets.map(tweets =>
+              <Tweet
+                username={tweets.username}
+                tweet={tweets.tweet}
+                time={tweets.time}
+              />
+            )
+          }
+        </TwitterWrapper>
+      </DayOfContentWrapper>
     );
   }
 }
