@@ -4,7 +4,6 @@ const formatUsers = require('../../db/lib/formatUsers');
 
 module.exports.createEvent = (req, res) => {
   models.Events.createEvent(req.body, (err, data) => {
-     console.log('CREATE EVENT EVENT', req.body)
     if (err) {
       res.send(500, err);
     } else {
@@ -12,7 +11,6 @@ module.exports.createEvent = (req, res) => {
         if (err) {
           res.send(500, err);
         } else {
-          console.log('Should be event id: ', data[0]);
           models.Map.makeMap(
             data[0],
             req.body.lat,
@@ -89,6 +87,7 @@ module.exports.getAllEvents = (req, res) => {
             if (err) {
               res.send(500, err);
             } else {
+              console.log('ALL EVENTS CONTROLLER: ', allEvents);
               const output = formatEvents(allEvents, allOrganizers, allMaps);
               res.send(200, output);
             }

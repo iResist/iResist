@@ -9,9 +9,11 @@ module.exports.findAllEvents = (cb) => {
     .join('maps', 'events.id', 'maps.event_id')
     .select('events.id', 'events.name', 'events.description', 'events.cause', 'events.address', 'events.attendee_count', 'events.time', 'events.duration', 'maps.id as mapId')
     .then(data => {
+      console.log('RESPONSE IN ALL EVENTS: ', data)
       cb(null, data);
     })
     .catch(e => {
+      console.log('ERROR IN ALL EVENTS: ', e)
       cb(e, null);
     });
 };
@@ -29,19 +31,6 @@ module.exports.findAllAttendees = (cb) => {
 module.exports.findEventAttendees = (eventId, cb) => {
   knex.select().from('users_events')
     .where('event_id', eventId)
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(e => {
-      cb(e, null);
-    });
-};
-
-module.exports.findEventByIds = (userId, type, cb) => {
-  knex.select('event_id')
-    .from('users_events')
-    .where('user_id', userId)
-    .andWhere('type', type)
     .then(data => {
       cb(null, data);
     })
