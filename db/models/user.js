@@ -13,6 +13,7 @@ module.exports.user = (userId, cb) => {
 module.exports.allUsers = (cb) => {
   knex.select().from('users')
     .then(data => {
+      console.log('RETURN FROM ALL USERS: ', data)
       cb(null, data);
     })
     .catch(e => {

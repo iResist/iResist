@@ -137,7 +137,6 @@ module.exports.findAllUsersForEvent = (eventId, cb) => {
     `, eventId
     )
     .then(data => {
-      console.log('RETURN FROM EVENT DATA: ', data.rows)
       cb(null, data.rows);
     })
     .catch(err => {
