@@ -109,7 +109,8 @@ describe('Feed model test', function() {
       expect(err).to.equal(null);
       expect(firstData).to.equal(1);
       feed.insertFeedItemVote(downVote, (err, secondData) => {
-        expect(secondData).to.equal(-1);
+        expect(err).to.not.equal(null);
+        done();
       })
     })
   })
