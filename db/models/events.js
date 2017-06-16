@@ -12,6 +12,7 @@ module.exports.findAllEvents = (cb) => {
       cb(null, data);
     })
     .catch(e => {
+      console.log('ERROR IN ALL EVENTS: ', e)
       cb(e, null);
     });
 };
@@ -29,19 +30,6 @@ module.exports.findAllAttendees = (cb) => {
 module.exports.findEventAttendees = (eventId, cb) => {
   knex.select().from('users_events')
     .where('event_id', eventId)
-    .then(data => {
-      cb(null, data);
-    })
-    .catch(e => {
-      cb(e, null);
-    });
-};
-
-module.exports.findEventByIds = (userId, type, cb) => {
-  knex.select('event_id')
-    .from('users_events')
-    .where('user_id', userId)
-    .andWhere('type', type)
     .then(data => {
       cb(null, data);
     })
@@ -112,7 +100,8 @@ module.exports.decrementAttendeeCount = (eventId, cb) => {
 };
 
 module.exports.joinEvent = (eventId, userId, type, cb) => {
-  knex('users_events').insert({user_id: userId, event_id: eventId, type: type})
+  knex('users_events')
+    .insert({user_id: userId, event_id: eventId, type: type})
     .then(data => {
       cb(null, data);
     })
@@ -137,7 +126,6 @@ module.exports.leaveEvent = (eventId, userId, cb) => {
 };
 
 module.exports.findAllUsersForEvent = (eventId, cb) => {
-  console.log('THIS IS THE DATA ABOUT TO GO INTO THE NEW QUERY', eventId);
   knex.raw(
     `
     SELECT users.id, users.username, users.credibility, users_events.type FROM users
@@ -184,7 +172,6 @@ module.exports.updateEventById = (updatedEvent, cb) => {
 };
 
 module.exports.deleteEventById = (eventId, cb) => {
-  console.log('EVENT ID FROM DELETE EVENT QUERY', eventId);
   knex('maps')
     .where('event_id', eventId)
     .del()

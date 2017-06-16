@@ -26,7 +26,6 @@ module.exports.insertUser = (userName, cb) => {
 };
 
 module.exports.createEvent = (eventId, userId, cb) => {
-  console.log('FROM USER CREATE EVENT: ', eventId, userId);
   knex('users_events').returning('event_id')
     .insert({
       user_id: userId,
