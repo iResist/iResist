@@ -133,4 +133,17 @@ describe('Event model tests', () => {
     })
   })
 
+  it('should find all event attendees', (done) => {
+    event.createEvent(newEvent, (err, eventId) => {
+      user.createEvent(eventId[0], 1, (err, data) => {
+        event.findAllUsersForEvent(1, (err, users) => {
+          expect(users.length).to.equal(1);
+          expect(users[0].id).to.equal(1);
+          expect(err).to.equal(null);
+          done();
+        })
+      })
+    })
+  })
+
 })

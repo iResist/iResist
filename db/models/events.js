@@ -32,6 +32,7 @@ module.exports.findEventAttendees = (eventId, cb) => {
   knex.select().from('users_events')
     .where('event_id', eventId)
     .then(data => {
+      console.log('ALL ATTENDEES: ', data)
       cb(null, data);
     })
     .catch(e => {
@@ -127,7 +128,6 @@ module.exports.leaveEvent = (eventId, userId, cb) => {
 };
 
 module.exports.findAllUsersForEvent = (eventId, cb) => {
-  console.log('THIS IS THE DATA ABOUT TO GO INTO THE NEW QUERY', eventId);
   knex.raw(
     `
     SELECT users.id, users.username, users.credibility, users_events.type FROM users
@@ -137,6 +137,7 @@ module.exports.findAllUsersForEvent = (eventId, cb) => {
     `, eventId
     )
     .then(data => {
+      console.log('RETURN FROM EVENT DATA: ', data.rows)
       cb(null, data.rows);
     })
     .catch(err => {
