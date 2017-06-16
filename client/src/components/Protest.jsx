@@ -53,14 +53,14 @@ class Protest extends React.Component {
       }, 180000
     );
   }
-  
-  testfunction() {		
-    setInterval(		
-      function test() {		
-         console.log('i have been invoked!')		
+
+  testfunction() {
+    setInterval(
+      function test() {
+         console.log('i have been invoked!')
          return test;
-      }(), 4000);		
- }		
+      }(), 4000);
+ }
 
 
   render() {
@@ -80,14 +80,14 @@ class Protest extends React.Component {
         <ToggledProtest>
           <Name onClick={this.handleProtestClick}>{this.props.protest.name}</Name>
           <Info>
-          
+
             <T><InfoTag>Cause</InfoTag> <p>{this.props.protest.cause}</p></T>
-        
+
             <div style={{display: 'flex'}}>
               <T><InfoTag>Time</InfoTag> <p>{dateFormat(startTime, 'mmmm dd, yyyy: h:MM TT')} to {dateFormat(endTime, 'h:MM TT')}</p></T>
             </div>
             <T><InfoTag>Address</InfoTag> <p>{this.props.protest.address}</p></T>
-            <T><InfoTag>Current Weather</InfoTag> <p>{this.state.currentTempF + "ºF / " + this.state.currentTempC + "ºC " + this.state.currentWeatherDescription}</p></T>
+            {/*<T><InfoTag>Current Weather</InfoTag> <p>{this.state.currentTempF + "ºF / " + this.state.currentTempC + "ºC " + this.state.currentWeatherDescription}</p></T>*/}
             <T><InfoTag>RSVP'd</InfoTag> <p>{this.props.protest.attendee_count}</p></T>
             <T><InfoTag>Description</InfoTag> <Description>{this.props.protest.description}</Description></T>
           </Info>
