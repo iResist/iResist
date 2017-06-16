@@ -13,7 +13,6 @@ module.exports.user = (userId, cb) => {
 module.exports.allUsers = (cb) => {
   knex.select().from('users')
     .then(data => {
-      console.log('RETURN FROM ALL USERS: ', data)
       cb(null, data);
     })
     .catch(e => {
@@ -27,7 +26,6 @@ module.exports.insertUser = (userName, cb) => {
 };
 
 module.exports.createEvent = (eventId, userId, cb) => {
-  console.log('FROM USER CREATE EVENT: ', eventId, userId);
   knex('users_events').returning('event_id')
     .insert({
       user_id: userId,

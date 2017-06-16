@@ -2,7 +2,6 @@ const knex = require('../').knex;
 const models = require('./../../db/models');
 
 module.exports.getFeedByEventId = (eventId, pageNumber, cb) => {
-  console.log('PAGE NUMBER FROM QUERY', pageNumber);
   models.FeedItem.where({event_id: eventId})
     .orderBy('id', 'DESC')
     .fetchPage({pageSize: 10, page: pageNumber})
@@ -52,7 +51,6 @@ module.exports.checkForFeedItemVote = (vote, cb) => {
 };
 
 module.exports.insertFeedItemVote = (vote, cb) => {
-  console.log('insertFeedItemVote ran');
   knex('feed_item_credibility')
     .returning('up_down')
     .insert({
@@ -68,7 +66,6 @@ module.exports.insertFeedItemVote = (vote, cb) => {
         .increment('credibility', vote.polarity);
     })
     .then(data => {
-      console.log('RETURN FROM VOTE: ', data)
       cb(null, data);
     })
     .catch(err => {

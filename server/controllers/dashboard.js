@@ -2,8 +2,6 @@ const models = require('../../db/models');
 const format = require('../../db/lib/formatDashboard.js');
 
 module.exports.getDashboard = (req, res) => {
-  //grab userId from request (2 is a placeholder)
-  console.log('Query Id: ', req.query.id);
   const userId = req.query.id || 6;
 
   models.Events.findAllEvents((err, allEvents) => {

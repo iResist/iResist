@@ -9,7 +9,6 @@ module.exports.findAllEvents = (cb) => {
     .join('maps', 'events.id', 'maps.event_id')
     .select('events.id', 'events.name', 'events.description', 'events.cause', 'events.address', 'events.attendee_count', 'events.time', 'events.duration', 'maps.id as mapId')
     .then(data => {
-      console.log('RESPONSE IN ALL EVENTS: ', data)
       cb(null, data);
     })
     .catch(e => {
@@ -32,7 +31,6 @@ module.exports.findEventAttendees = (eventId, cb) => {
   knex.select().from('users_events')
     .where('event_id', eventId)
     .then(data => {
-      console.log('ALL ATTENDEES: ', data)
       cb(null, data);
     })
     .catch(e => {
@@ -174,7 +172,6 @@ module.exports.updateEventById = (updatedEvent, cb) => {
 };
 
 module.exports.deleteEventById = (eventId, cb) => {
-  console.log('EVENT ID FROM DELETE EVENT QUERY', eventId);
   knex('maps')
     .where('event_id', eventId)
     .del()

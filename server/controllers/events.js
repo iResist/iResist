@@ -30,7 +30,6 @@ module.exports.createEvent = (req, res) => {
 };
 
 module.exports.joinEvent = (req, res) => {
-  console.log('JOIN EVENT REQ.BODY:', req.body);
   models.Events.joinEvent(
     req.body.eventId,
     req.body.userId,
@@ -54,7 +53,6 @@ module.exports.joinEvent = (req, res) => {
 };
 
 module.exports.leaveEvent = (req, res) => {
-  console.log('LEAVE EVENT REQ.BODY:', req.body);
   models.Events.leaveEvent(req.body.eventId, req.body.userId, (err, data) => {
     if (err) {
       console.log('ERR FROM CONTROLLERS/EVENTS:', err);
@@ -87,7 +85,6 @@ module.exports.getAllEvents = (req, res) => {
             if (err) {
               res.send(500, err);
             } else {
-              console.log('ALL EVENTS CONTROLLER: ', allEvents);
               const output = formatEvents(allEvents, allOrganizers, allMaps);
               res.send(200, output);
             }
@@ -110,9 +107,7 @@ module.exports.updateEvent = (req, res) => {
 
 module.exports.deleteEvent = (req, res) => {
   models.Events.deleteEventById(req.query.eventId, (err, data) => {
-    console.log('DELETE EVENT SERVER REQ.BODY', req.query);
     if (err) {
-      console.log('DELETE EVENT ERROR FROM SERVER', err);
       res.send(500, err);
     } else {
       res.send(200, data);
