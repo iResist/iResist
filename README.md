@@ -1,6 +1,6 @@
 # iResist
 
-The project description
+iResist helps citizens plan and execute protests and other forms of civil disobedience.  Users can create, plan, and find protests in advance.  On the day-of an event, they can coordinate via a Waze style map, a media feed, and broadcast if they’re being arrested.
 
 ## Team
 
@@ -11,7 +11,7 @@ The project description
 
 ## Roadmap
 
-View the project roadmap [here](LINK_TO_DOC)
+View the project roadmap [here](https://docs.google.com/spreadsheets/d/1iW6V6pr7M9L3i1zb44Dc_hPPcY5DfiUriF6eFwTTkYc/edit#gid=0)
 
 ## Contributing
 
@@ -27,7 +27,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## Usage
 
-> Some usage instructions
+> Go to https://i-resist.herokuapp.com/
 
 ## Requirements
 
