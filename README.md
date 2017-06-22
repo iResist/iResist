@@ -4,10 +4,10 @@ iResist helps citizens plan and execute protests and other forms of civil disobe
 
 ## Team
 
-- Alex Seiden
-- Christopher Russell Ward
-- Tabitha Hsia
-- Yujin Chung
+- [Alex Seiden](https://github.com/aseiden)
+- [Christopher Russell Ward] (https://github.com/RussWard)
+- [Tabitha Hsia] (https://github.com/tabithahsia)
+- [Yujin Chung] (https://github.com/yujin0chung)
 
 ## Roadmap
 
