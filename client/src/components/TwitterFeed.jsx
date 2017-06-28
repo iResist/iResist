@@ -55,11 +55,12 @@ class TwitterFeed extends React.Component {
           <Load onClick={this.getTweets}>Refresh Feed</Load>
 
           {
-            this.state.tweets.map(tweets =>
+            this.state.tweets.map((tweets, i) =>
               <Tweet
                 username={tweets.username}
                 tweet={tweets.tweet}
                 time={tweets.time}
+                key={i}
               />
             )
           }
