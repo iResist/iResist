@@ -22,7 +22,7 @@ class TwitterFeed extends React.Component {
       tweets: []
     });
     axios
-      .get('/getTweet', {
+      .get('/api/tweets', {
         params: {
           searchTerm: this.props.events.allEvents[this.props.events.activeEvent].name,
         }
