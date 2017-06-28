@@ -22,7 +22,7 @@ class TwitterFeed extends React.Component {
       tweets: []
     });
     axios
-      .get('/getTweet', {
+      .get('/api/tweets', {
         params: {
           searchTerm: this.props.events.allEvents[this.props.events.activeEvent].name,
         }
@@ -55,11 +55,12 @@ class TwitterFeed extends React.Component {
           <Load onClick={this.getTweets}>Refresh Feed</Load>
 
           {
-            this.state.tweets.map(tweets =>
+            this.state.tweets.map((tweets, i) =>
               <Tweet
                 username={tweets.username}
                 tweet={tweets.tweet}
                 time={tweets.time}
+                key={i}
               />
             )
           }
