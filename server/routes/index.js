@@ -7,3 +7,4 @@ module.exports.geocoder = require('./geocoder');
 module.exports.user = require('./user');
 module.exports.maps = require('./maps');
 module.exports.feed = require('./feed');
+module.exports.twitter = require('./twitter');
