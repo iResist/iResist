@@ -45,9 +45,9 @@ var T = new Twit({
 module.exports.getTweets = (req, res) => {
   T.get('search/tweets', { q: req.query.searchTerm, count: 100 }, function(err, data, response) {
     if (err) {
-      console.log(err);
+      res.send(500, err);
     } else {
-      res.send(data.statuses);
+      res.send(200, data.statuses);
     }
   });
 };
