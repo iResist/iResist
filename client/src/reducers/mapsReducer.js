@@ -17,12 +17,14 @@ export const maps = (state = {}, action) => {
     });
   }
   case 'RECEIVED_PIN': {
-    let newState = Object.assign({}, state);
     const pinId = action.pin.allPins[0];
     const mapId = action.pin[pinId].map_id;
-    newState.pins.allPins.push(pinId);
-    newState.pins[pinId] = action.pin[pinId];
-    return newState;
+    let newAllPins = [...state.pins.allPins];
+    newAllPins.push(pinId);
+    return Object.assign({}, state, {
+      pins: {...state.pins, allPins: newAllPins, [pinId]: action.pin[pinId]},
+      allMaps: {...state.allMaps, [mapId]: {...state.allMaps[mapId], pins: newAllPins}}
+    });
   }
   case 'RECEIVED_PIN_VOTE': {
     let newState = Object.assign({}, state);
